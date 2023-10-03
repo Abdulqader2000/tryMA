@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Upload Dataset</h2>
+<form action="/upload" method="POST" enctype="multipart/form-data">
+    <label for="file" class="upload-label">Choose a CSV File</label>
+    <input type="file" name="file" id="file" accept=".csv" required>
+    <button type="submit">Upload</button>
+</form>
+
+<h3>Uploaded Datasets</h3>
+<div class="table-container">
+    <!-- Display a sample of CSV data -->
+    <table>
+        {% if csv_data %}
+        <thead>
+            <tr>
+                {% for header in csv_data[0] %}
+                <th>{{ header }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in csv_data[1:] %}
+            <tr>
+                {% for cell in row %}
+                <td>{{ cell }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+        {% endif %}
+    </table>
+</div>
+{% endblock %}

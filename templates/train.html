@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Train Model</h2>
+<form action="/train" method="POST">
+    <label for="algorithm">Select Algorithm:</label>
+    <select name="algorithm" id="algorithm">
+        <!-- Algorithm options here -->
+    </select>
+
+    <label for="epochs">Number of Epochs:</label>
+    <input type="number" name="epochs" id="epochs" min="1" value="10">
+
+    <label for="learning_rate">Learning Rate:</label>
+    <input type="number" name="learning_rate" id="learning_rate" step="0.01" value="0.01">
+
+    <button type="submit">Train Model</button>
+</form>
+<button onclick="location.href='/upload'">Previous: Upload Dataset</button>
+<button onclick="location.href='/'">Home</button>
+{% endblock %}
